@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>untitled</artifactId>
+    <artifactId>PrestigeCliApp</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -16,7 +16,6 @@
 
     <dependencies>
 
-        <!-- MySQL JDBC Connector Dependency -->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
@@ -24,7 +23,6 @@
         </dependency>
 
 
-        <!--   BCrypt Dependency   -->
         <dependency>
             <groupId>org.mindrot</groupId>
             <artifactId>jbcrypt</artifactId>
