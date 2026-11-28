@@ -1,12 +1,10 @@
 package com.joysistvi.prestigecliapp;
 
 import com.joysistvi.prestigecliapp.config.DbConnection;
-import com.joysistvi.prestigecliapp.repository.UserRepository;
-import com.joysistvi.prestigecliapp.repository.UserRepositoryImpl;
-import com.joysistvi.prestigecliapp.service.UserService;
-import com.joysistvi.prestigecliapp.service.UserServiceImpl;
-import com.joysistvi.prestigecliapp.view.UserView;
-import com.joysistvi.prestigecliapp.model.User;
+import com.joysistvi.prestigecliapp.model.PersonalTraining;
+import com.joysistvi.prestigecliapp.repository.*;
+import com.joysistvi.prestigecliapp.service.*;
+import com.joysistvi.prestigecliapp.view.*;
 
 import java.util.Scanner;
 
@@ -26,25 +24,33 @@ public class Main {
         DbConnection dbConnection = new DbConnection();
         Scanner scanner = new Scanner(System.in);
 
-        UserRepository userRepository =
-                new UserRepositoryImpl(dbConnection);
+        ClassParticipantRepository classParticipantRepository = new ClassParticipantRepositoryImpl(dbConnection);
+        ClassParticipantService classParticipantService = new ClassParticipantServiceImpl(classParticipantRepository);
+        ClassParticipantView classParticipantView = new ClassParticipantView(classParticipantService, scanner);
 
-        UserService userService =
-                new UserServiceImpl(userRepository);
+        PersonalTrainingRepository personalTrainingRepository = new PersonalTrainingRepositoryImpl(dbConnection);
+        PersonalTrainingService personalTrainingService = new PersonalTrainingServiceImpl(personalTrainingRepository);
+        PersonalTrainingView personalTrainingView = new PersonalTrainingView(personalTrainingService, scanner);
 
-        UserView userView =
-                new UserView(userService, scanner);
+        PurchaseHistoryRepository purchaseHistoryRepository = new PurchaseHistoryRepositoryImpl(dbConnection);
+        PurchaseHistoryService purchaseHistoryService = new PurchaseHistoryServiceImpl(purchaseHistoryRepository);
+        PurchaseHistoryView purchaseHistoryView = new PurchaseHistoryView(purchaseHistoryService, scanner);
 
-        User loggedInUser =
-                userView.showLoginPrompt();
+        SubscribedMemberRepository subscribedMemberRepository = new SubscribedMemberRepositoryImpl(dbConnection);
+        SubscribedMemberService subscribedMemberService = new SubscribedMemberServiceImpl(subscribedMemberRepository);
+        SubscribedMemberView subscribedMemberView = new SubscribedMemberView(subscribedMemberService, scanner);
 
-        if (loggedInUser == null) {
-            System.out.println("Login Failed.");
-            return;
-        }
+        TopUpHistoryRepository topUpHistoryRepository = new TopUpHistoryRepositoryImpl(dbConnection);
+        TopUpHistoryService topUpHistoryService = new TopUpHistoryServiceImpl(topUpHistoryRepository);
+        TopUpHistoryView topUpHistoryView = new TopUpHistoryView(topUpHistoryService, scanner);
 
-        if ("ADMIN".equalsIgnoreCase(loggedInUser.getRole())) {
-            userView.handleAdminUserMenu();
-        }
+        TrainingBookingRepository trainingBookingRepository = new TrainingBookingRepositoryImpl(dbConnection);
+        TrainingBookingService trainingBookingService = new TrainingBookingServiceImpl(trainingBookingRepository);
+        TrainingBookingView trainingBookingView = new TrainingBookingView(trainingBookingService, personalTrainingView, scanner);
+
+        UserRepository userRepository = new UserRepositoryImpl(dbConnection);
+        UserService userService = new UserServiceImpl(userRepository);
+        UserView userView = new UserView(userService, scanner);
+
     }
 }

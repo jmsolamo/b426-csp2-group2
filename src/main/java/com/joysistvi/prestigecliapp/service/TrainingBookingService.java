@@ -10,7 +10,7 @@ public interface TrainingBookingService {
     List<TrainingBooking> getAllArchived();
     List<TrainingBooking> getByUserId(int userId);
     List<TrainingBooking> getByInstructorId(int instructorId);
-    TrainingBooking getById(int id);
+    //TrainingBooking getById(int id);
     boolean bookSession(int userId, int personalTrainingId, Date bookingDate, Time startTime, Time endTime);
     boolean updateStatus(int id, String status);
     boolean cancelBooking(int id);

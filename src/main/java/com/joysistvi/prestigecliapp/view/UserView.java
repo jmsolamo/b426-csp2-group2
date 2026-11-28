@@ -17,10 +17,6 @@ public class UserView {
         this.scanner = scanner;
     }
 
-    // ══════════════════════════════════════════════════════════
-    //  AUTH MENU (called from App)
-    // ══════════════════════════════════════════════════════════
-
     public User showLoginPrompt() {
         System.out.println("\n----- User Login -----");
         System.out.print("Enter Username: ");
@@ -63,10 +59,6 @@ public class UserView {
         return success;
     }
 
-    // ══════════════════════════════════════════════════════════
-    //  ADMIN – User Management Menu
-    // ══════════════════════════════════════════════════════════
-
     public void handleAdminUserMenu() {
         while (true) {
             clearScreen();
@@ -95,10 +87,6 @@ public class UserView {
         }
     }
 
-    // ══════════════════════════════════════════════════════════
-    //  ADMIN – Instructor Account Creation
-    // ══════════════════════════════════════════════════════════
-
     public void promptCreateInstructor() {
         System.out.println("\n----- Create Instructor Account -----");
         System.out.print("Enter First Name: ");
@@ -119,10 +107,6 @@ public class UserView {
         }
         pressEnterToContinue();
     }
-
-    // ══════════════════════════════════════════════════════════
-    //  PERSONAL DETAILS & PASSWORD (any role)
-    // ══════════════════════════════════════════════════════════
 
     public void showPersonalDetails(User currentUser) {
         User user = userService.findById(currentUser.getId());
@@ -171,10 +155,6 @@ public class UserView {
         pressEnterToContinue();
     }
 
-    // ══════════════════════════════════════════════════════════
-    //  PRIVATE HELPERS
-    // ══════════════════════════════════════════════════════════
-
     private void promptUpdatePersonalInfo(User user) {
         System.out.println("\n----- Update Personal Info -----");
         System.out.print("First Name [" + user.getFirstName() + "]: ");
@@ -204,12 +184,6 @@ public class UserView {
                     u.getUsername(), u.getEmail(), u.getRole()
             });
         }
-//        ConsoleTablePrinter.printTable(
-//                "----- " + title + " -----",
-//                new String[]{"ID", "Full Name", "Username", "Email", "Role"},
-//                new int[]{5, 22, 15, 25, 12},
-//                rows,
-//                "No users found.");
         pressEnterToContinue();
     }
 
@@ -261,8 +235,6 @@ public class UserView {
         }
         pressEnterToContinue();
     }
-
-    // ── Shared utility methods ──────────────────────────────
 
     private int promptForInt(String prompt) {
         System.out.print(prompt);

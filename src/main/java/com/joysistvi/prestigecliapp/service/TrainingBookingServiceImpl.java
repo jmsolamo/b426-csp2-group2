@@ -16,8 +16,7 @@ public class TrainingBookingServiceImpl implements TrainingBookingService {
     private final TrainingBookingRepository bookingRepository;
     private final PersonalTrainingRepository ptRepository;
 
-    public TrainingBookingServiceImpl(TrainingBookingRepository bookingRepository,
-                                      PersonalTrainingRepository ptRepository) {
+    public TrainingBookingServiceImpl(TrainingBookingRepository bookingRepository) {
         this.bookingRepository = bookingRepository;
         this.ptRepository = ptRepository;
     }
