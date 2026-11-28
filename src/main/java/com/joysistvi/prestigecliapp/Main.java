@@ -6,6 +6,7 @@ import com.joysistvi.prestigecliapp.repository.UserRepositoryImpl;
 import com.joysistvi.prestigecliapp.service.UserService;
 import com.joysistvi.prestigecliapp.service.UserServiceImpl;
 import com.joysistvi.prestigecliapp.view.UserView;
+import com.joysistvi.prestigecliapp.model.User;
 
 import java.util.Scanner;
 
@@ -25,11 +26,25 @@ public class Main {
         DbConnection dbConnection = new DbConnection();
         Scanner scanner = new Scanner(System.in);
 
-        UserRepository userRepository = new UserRepositoryImpl(dbConnection);
-        UserService userService = new UserServiceImpl(userRepository);
-        UserView userView = new UserView(userService, scanner);
+        UserRepository userRepository =
+                new UserRepositoryImpl(dbConnection);
 
-        userView.showLoginPrompt();
+        UserService userService =
+                new UserServiceImpl(userRepository);
 
+        UserView userView =
+                new UserView(userService, scanner);
+
+        User loggedInUser =
+                userView.showLoginPrompt();
+
+        if (loggedInUser == null) {
+            System.out.println("Login Failed.");
+            return;
+        }
+
+        if ("ADMIN".equalsIgnoreCase(loggedInUser.getRole())) {
+            userView.handleAdminUserMenu();
+        }
     }
 }
