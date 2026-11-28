@@ -3,20 +3,23 @@ package com.joysistvi.prestigecliapp.model;
 public class MembershipCard {
 
     private int id;
-    private int memberId;
-    private String cardNumber;
-    private String issueDate;
-    private String expiryDate;
+    private int userId;
+    private String cardCode;
+    private double walletBalance;
+    private String status;
 
-    public MembershipCard() {}
+    public MembershipCard() {
+    }
 
-    public MembershipCard(int id, int memberId, String cardNumber,
-                          String issueDate, String expiryDate) {
+    public MembershipCard(int id, int userId,
+                          String cardCode,
+                          double walletBalance,
+                          String status) {
         this.id = id;
-        this.memberId = memberId;
-        this.cardNumber = cardNumber;
-        this.issueDate = issueDate;
-        this.expiryDate = expiryDate;
+        this.userId = userId;
+        this.cardCode = cardCode;
+        this.walletBalance = walletBalance;
+        this.status = status;
     }
 
     public int getId() {
@@ -27,37 +30,35 @@ public class MembershipCard {
         this.id = id;
     }
 
-    public int getMemberId() {
-        return memberId;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setMemberId(int memberId) {
-        this.memberId = memberId;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public String getCardNumber() {
-        return cardNumber;
+    public String getCardCode() {
+        return cardCode;
     }
 
-    public void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
+    public void setCardCode(String cardCode) {
+        this.cardCode = cardCode;
     }
 
-    public String getIssueDate() {
-        return issueDate;
+    public double getWalletBalance() {
+        return walletBalance;
     }
 
-    public void setIssueDate(String issueDate) {
-        this.issueDate = issueDate;
+    public void setWalletBalance(double walletBalance) {
+        this.walletBalance = walletBalance;
     }
 
-    public String getExpiryDate() {
-        return expiryDate;
+    public String getStatus() {
+        return status;
     }
 
-    public void setExpiryDate(String expiryDate) {
-        this.expiryDate = expiryDate;
+    public void setStatus(String status) {
+        this.status = status;
     }
-
-    // Generate getters and setters
 }

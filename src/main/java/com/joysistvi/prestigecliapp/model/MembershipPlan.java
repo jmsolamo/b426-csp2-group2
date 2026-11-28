@@ -3,18 +3,34 @@ package com.joysistvi.prestigecliapp.model;
 public class MembershipPlan {
 
     private int id;
-    private String planName;
-    private int durationMonths;
+    private String name;
+    private String description;
     private double price;
+    private int durationDays;
+    private String inclusions;
+    private Integer classLimit;
+    private int isArchived;
 
-    public MembershipPlan() {}
+    public MembershipPlan() {
+    }
 
-    public MembershipPlan(int id, String planName,
-                          int durationMonths, double price) {
+    public MembershipPlan(int id,
+                          String name,
+                          String description,
+                          double price,
+                          int durationDays,
+                          String inclusions,
+                          Integer classLimit,
+                          int isArchived) {
+
         this.id = id;
-        this.planName = planName;
-        this.durationMonths = durationMonths;
+        this.name = name;
+        this.description = description;
         this.price = price;
+        this.durationDays = durationDays;
+        this.inclusions = inclusions;
+        this.classLimit = classLimit;
+        this.isArchived = isArchived;
     }
 
     public int getId() {
@@ -25,20 +41,20 @@ public class MembershipPlan {
         this.id = id;
     }
 
-    public String getPlanName() {
-        return planName;
+    public String getName() {
+        return name;
     }
 
-    public void setPlanName(String planName) {
-        this.planName = planName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getDurationMonths() {
-        return durationMonths;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDurationMonths(int durationMonths) {
-        this.durationMonths = durationMonths;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public double getPrice() {
@@ -49,5 +65,35 @@ public class MembershipPlan {
         this.price = price;
     }
 
-    // Generate getters and setters
+    public int getDurationDays() {
+        return durationDays;
+    }
+
+    public void setDurationDays(int durationDays) {
+        this.durationDays = durationDays;
+    }
+
+    public String getInclusions() {
+        return inclusions;
+    }
+
+    public void setInclusions(String inclusions) {
+        this.inclusions = inclusions;
+    }
+
+    public Integer getClassLimit() {
+        return classLimit;
+    }
+
+    public void setClassLimit(Integer classLimit) {
+        this.classLimit = classLimit;
+    }
+
+    public int getIsArchived() {
+        return isArchived;
+    }
+
+    public void setIsArchived(int isArchived) {
+        this.isArchived = isArchived;
+    }
 }
