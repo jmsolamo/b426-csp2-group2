@@ -40,7 +40,7 @@ public class ClassParticipantRepositoryImpl implements ClassParticipantRepositor
             }
 
         } catch (SQLException e) {
-            System.out.println("Search failed" + e.getMessage());
+            System.out.println("Search failed " + e.getMessage());
         }
 
         return classParticipants;
@@ -70,7 +70,7 @@ public class ClassParticipantRepositoryImpl implements ClassParticipantRepositor
             }
 
         } catch (SQLException e) {
-            System.out.println("Search failed" + e.getMessage());
+            System.out.println("Search failed " + e.getMessage());
         }
 
         return null;
@@ -101,7 +101,7 @@ public class ClassParticipantRepositoryImpl implements ClassParticipantRepositor
             }
 
         } catch (SQLException e) {
-            System.out.println("Search failed" + e.getMessage());
+            System.out.println("Search failed " + e.getMessage());
         }
 
         return classParticipants;
@@ -132,7 +132,7 @@ public class ClassParticipantRepositoryImpl implements ClassParticipantRepositor
             }
 
         } catch (SQLException e) {
-            System.out.println("Search failed" + e.getMessage());
+            System.out.println("Search failed " + e.getMessage());
         }
 
         return classParticipants;
@@ -157,7 +157,7 @@ public class ClassParticipantRepositoryImpl implements ClassParticipantRepositor
             return rowsAffected > 0;
 
         } catch (SQLException e) {
-            System.out.println("Adding failed" + e.getMessage());
+            System.out.println("Adding failed " + e.getMessage());
             return false;
         }
     }
@@ -177,7 +177,7 @@ public class ClassParticipantRepositoryImpl implements ClassParticipantRepositor
             return rowsAffected > 0;
 
         } catch (SQLException e) {
-            System.out.println("Removing failed" + e.getMessage());
+            System.out.println("Removing failed " + e.getMessage());
             return false;
         }
     }
@@ -196,7 +196,7 @@ public class ClassParticipantRepositoryImpl implements ClassParticipantRepositor
             return rowsAffected > 0;
 
         } catch (SQLException e) {
-            System.out.println("Archiving failed" + e.getMessage());
+            System.out.println("Archiving failed " + e.getMessage());
             return false;
         }
     }
@@ -215,7 +215,7 @@ public class ClassParticipantRepositoryImpl implements ClassParticipantRepositor
             return rowsAffected > 0;
 
         } catch (SQLException e) {
-            System.out.println("Restoring failed" + e.getMessage());
+            System.out.println("Restoring failed " + e.getMessage());
             return false;
         }
     }
@@ -235,7 +235,7 @@ public class ClassParticipantRepositoryImpl implements ClassParticipantRepositor
             return rowsAffected > 0;
 
         } catch (SQLException e) {
-            System.out.println("Updating failed" + e.getMessage());
+            System.out.println("Updating failed " + e.getMessage());
             return false;
         }
     }

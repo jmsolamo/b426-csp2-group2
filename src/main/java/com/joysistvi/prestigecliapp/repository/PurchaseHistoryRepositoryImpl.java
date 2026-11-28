@@ -41,7 +41,7 @@ public class PurchaseHistoryRepositoryImpl implements PurchaseHistoryRepository 
             }
 
         } catch (SQLException e) {
-            System.out.println("Search failed" + e.getMessage());
+            System.out.println("Search failed " + e.getMessage());
         }
 
         return purchaseHistories;
@@ -72,7 +72,7 @@ public class PurchaseHistoryRepositoryImpl implements PurchaseHistoryRepository 
             }
 
         } catch (SQLException e) {
-            System.out.println("Search failed" + e.getMessage());
+            System.out.println("Search failed " + e.getMessage());
         }
 
         return null;
@@ -104,7 +104,7 @@ public class PurchaseHistoryRepositoryImpl implements PurchaseHistoryRepository 
             }
 
         } catch (SQLException e) {
-            System.out.println("Search failed" + e.getMessage());
+            System.out.println("Search failed " + e.getMessage());
         }
 
         return purchaseHistories;
@@ -135,7 +135,7 @@ public class PurchaseHistoryRepositoryImpl implements PurchaseHistoryRepository 
             }
 
         } catch (SQLException e) {
-            System.out.println("Search failed" + e.getMessage());
+            System.out.println("Search failed " + e.getMessage());
         }
 
         return null;
@@ -167,7 +167,7 @@ public class PurchaseHistoryRepositoryImpl implements PurchaseHistoryRepository 
             }
 
         } catch (SQLException e) {
-            System.out.println("Search failed" + e.getMessage());
+            System.out.println("Search failed " + e.getMessage());
         }
 
         return purchaseHistories;
@@ -204,7 +204,7 @@ public class PurchaseHistoryRepositoryImpl implements PurchaseHistoryRepository 
             }
 
         } catch (SQLException e) {
-            System.out.println("Search failed" + e.getMessage());
+            System.out.println("Search failed " + e.getMessage());
         }
 
         return purchaseHistories;
@@ -230,7 +230,7 @@ public class PurchaseHistoryRepositoryImpl implements PurchaseHistoryRepository 
             return rowsAffected > 0;
 
         } catch (SQLException e) {
-            System.out.println("Saving failed" + e.getMessage());
+            System.out.println("Saving failed " + e.getMessage());
             return false;
         }
     }
@@ -250,7 +250,7 @@ public class PurchaseHistoryRepositoryImpl implements PurchaseHistoryRepository 
             return rowsAffected > 0;
 
         } catch (SQLException e) {
-            System.out.println("Updating failed" + e.getMessage());
+            System.out.println("Updating failed " + e.getMessage());
             return false;
         }
     }
