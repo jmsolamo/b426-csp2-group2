@@ -1,41 +1,30 @@
 package com.joysistvi.prestigecliapp;
 
 import com.joysistvi.prestigecliapp.config.DbConnection;
-
-import com.joysistvi.prestigecliapp.model.User;
-
 import com.joysistvi.prestigecliapp.repository.UserRepository;
 import com.joysistvi.prestigecliapp.repository.UserRepositoryImpl;
-import com.joysistvi.prestigecliapp.repository.ClassParticipantRepository;
-import com.joysistvi.prestigecliapp.repository.ClassParticipantRepositoryImpl;
-import com.joysistvi.prestigecliapp.repository.PurchaseHistoryRepository;
-import com.joysistvi.prestigecliapp.repository.PurchaseHistoryRepositoryImpl;
-import com.joysistvi.prestigecliapp.repository.SubscribedMemberRepository;
-import com.joysistvi.prestigecliapp.repository.SubscribedMemberRepositoryImpl;
-
 import com.joysistvi.prestigecliapp.service.UserService;
 import com.joysistvi.prestigecliapp.service.UserServiceImpl;
-import com.joysistvi.prestigecliapp.service.ClassParticipantService;
-import com.joysistvi.prestigecliapp.service.ClassParticipantServiceImpl;
-import com.joysistvi.prestigecliapp.service.PurchaseHistoryService;
-import com.joysistvi.prestigecliapp.service.PurchaseHistoryServiceImpl;
-import com.joysistvi.prestigecliapp.service.SubscribedMemberService;
-import com.joysistvi.prestigecliapp.service.SubscribedMemberServiceImpl;
-
 import com.joysistvi.prestigecliapp.view.UserView;
-import com.joysistvi.prestigecliapp.view.ClassParticipantView;
-import com.joysistvi.prestigecliapp.view.PurchaseHistoryView;
-import com.joysistvi.prestigecliapp.view.SubscribedMemberView;
+import com.joysistvi.prestigecliapp.model.User;
 
 import java.util.Scanner;
 
 public class Main {
 
+    private final Scanner scanner;
+    private final UserView userView;
+
+
+    public Main (Scanner scanner, UserView userView) {
+        this.scanner = scanner;
+        this.userView = userView;
+    }
+
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-
         DbConnection dbConnection = new DbConnection();
+        Scanner scanner = new Scanner(System.in);
 
         UserRepository userRepository =
                 new UserRepositoryImpl(dbConnection);
@@ -54,61 +43,8 @@ public class Main {
             return;
         }
 
-        if (!"ADMIN".equalsIgnoreCase(loggedInUser.getRole())) {
-            System.out.println("Access Denied. Admins only.");
-            return;
-        }
-
-        ClassParticipantRepository classParticipantRepository =
-                new ClassParticipantRepositoryImpl(dbConnection);
-
-        ClassParticipantService classParticipantService =
-                new ClassParticipantServiceImpl(classParticipantRepository);
-
-        SubscribedMemberRepository subscribedMemberRepository =
-                new SubscribedMemberRepositoryImpl(dbConnection);
-
-        SubscribedMemberService subscribedMemberService =
-                new SubscribedMemberServiceImpl(subscribedMemberRepository);
-
-        PurchaseHistoryRepository purchaseHistoryRepository =
-                new PurchaseHistoryRepositoryImpl(dbConnection);
-
-        PurchaseHistoryService purchaseHistoryService =
-                new PurchaseHistoryServiceImpl(purchaseHistoryRepository);
-
-        ClassParticipantView classParticipantView =
-                new ClassParticipantView(classParticipantService, scanner);
-
-        SubscribedMemberView subscribedMemberView =
-                new SubscribedMemberView(subscribedMemberService, scanner);
-
-        PurchaseHistoryView purchaseHistoryView =
-                new PurchaseHistoryView(purchaseHistoryService, scanner);
-
-        while (true) {
-            System.out.println("\n===== PRESTIGE CLI APP =====");
-            System.out.println("1. Class Participants");
-            System.out.println("2. Subscribed Members");
-            System.out.println("3. Purchase History");
-            System.out.println("4. User Management");
-            System.out.println("0. Exit");
-            System.out.print("Enter choice: ");
-
-            int choice = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (choice) {
-                case 1 -> classParticipantView.handleMenu();
-                case 2 -> subscribedMemberView.handleMenu();
-                case 3 -> purchaseHistoryView.handleMenu();
-                case 4 -> userView.handleAdminUserMenu();
-                case 0 -> {
-                    System.out.println("Exiting application...");
-                    return;
-                }
-                default -> System.out.println("Invalid choice. Try again.");
-            }
+        if ("ADMIN".equalsIgnoreCase(loggedInUser.getRole())) {
+            userView.handleAdminUserMenu();
         }
     }
 }
